@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { ProductCard } from './components/ProductCard';
+import Header from './components/Header';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -17,6 +18,8 @@ function App() {
   };
 
   return (
+    <>
+    <Header />
     <div className="bg-light min-vh-100">
       <Navbar cartCount={cart.length} onNavigate={setCurrentView} />
 
@@ -43,6 +46,7 @@ function App() {
         {currentView === 'cart' && <h2 className="mt-4">Carrito de Compras ({cart.length} ítems)</h2>}
       </main>
     </div>
+    </>
   );
 }
 
