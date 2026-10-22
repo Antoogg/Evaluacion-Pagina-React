@@ -7,7 +7,7 @@ const ENLACES = [
 
 function Header({enlaces = ENLACES}){
     return (
-    <header className="encabezado">
+    <header className="encabezado-principal">
         <div className="contenedor-logo">
             <a href="ENLACES.LOGO" className="enlace-logo">
                 <h1 className="titulo-empresa">Acceso Seguro</h1>
@@ -18,15 +18,15 @@ function Header({enlaces = ENLACES}){
         <nav className="navegacion">
             <ul>
                 {enlaces.map((e) => (
-                    <li key={e.texto}>
-                        <a href={e.href}>
+                    <li  key={e.texto}>
+                        <a href={e.href} class="enlace-nav">
                             {e.texto}
                         </a>
                     </li>
                 ))}
             </ul>
         </nav>
-        <img src="/assets/Logo2.png" alt="Logo Acceso Seguro" className="img-logo" />
+        <img src="src/assets/Logo2-removebg-preview.png" alt="Logo Acceso Seguro" className="img-logo" />
     </header>
     );
 }

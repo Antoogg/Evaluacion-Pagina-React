@@ -2,6 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
@@ -11,18 +16,24 @@ body {
 }
 
 .encabezado-principal {
-  background-color: #0f172a;
+  background-color: #091e3d;
   color: #ffffff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .contenedor-logo a {
   text-decoration: none;
   color: inherit;
+}
+
+.contenedor-logo {
+  display: flex;
+  flex-direction: column;
 }
 
 .titulo-empresa {
@@ -37,25 +48,35 @@ body {
   display: block;
 }
 
-.navegacion-principal ul {
+.navegacion-principal {
+  margin: 0;
+}
+
+.navegacion ul {
   display: flex;
   list-style: none;
   gap: 1.5rem;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .enlace-nav {
   color: #cbd5e1;
+  padding: 0.4rem 0;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-block;
   transition: color 0.2s;
 }
 
 .enlace-nav:hover,
 .enlace-nav.active {
   color: #38bdf8;
+  border-bottom: 2px solid #38bdf8;
 }
+
 
 .img-logo {
   height: 40px;
