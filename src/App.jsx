@@ -19,10 +19,7 @@ export default function App() {
           <Route path="/login" element={<LoginView />} />
           <Route path="/registro" element={<RegistroView />} />
           <Route path="/recuperar" element={<RecuperacionView />} />
-          
-          <Route element={<ProtectedRoute roles={['Administrador', 'Guardia']} />}>
-            <Route path="/control" element={<ControlView />} />
-          </Route>
+          <Route path="/control" element={<ControlView />} />
         </Routes>
       </div>
       <Footer />
