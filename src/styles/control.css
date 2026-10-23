@@ -14,19 +14,23 @@
 }
 
 .badge-status-dentro {
-  background-color: #d1fae5;
-  color: #065f46;
+  background-color: #155724;
+  color: #ffffff;
   font-weight: 600;
-  padding: 0.35em 0.65em;
-  border-radius: 6px;
+  padding: 0.2em 0.5em;
+  font-size: 0.80rem;
+  border-radius: 4px;
 }
 
 .badge-status-fuera {
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: #c62828;
+  color: #ffffff;
   font-weight: 600;
   padding: 0.35em 0.65em;
   border-radius: 6px;
+  padding: 0.2em 0.5em;
+  font-size: 0.80rem;
+  border-radius: 4px;
 }
 
 .tabla-control th {

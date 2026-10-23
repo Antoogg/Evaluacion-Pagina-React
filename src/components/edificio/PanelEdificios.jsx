@@ -1,42 +1,33 @@
-import { useState } from 'react';
 import TablaPersonas from './TablaPersonas';
 
 function EdificioItem({ id, nombre, personas, abierto, onToggle }) {
   const dentro = personas.filter((p) => p.estado === 'Dentro').length;
 
   return (
-    <div className="accordion-item mb-3 border rounded shadow-sm overflow-hidden">
+    <div className="accordion-item">
       <h2 className="accordion-header">
         <button
           type="button"
-          className={`accordion-button fw-bold d-flex justify-content-between align-items-center ${abierto ? '' : 'collapsed'}`}
+          className={`accordion-button fw-bold${abierto ? '' : ' collapsed'}`}
           aria-expanded={abierto}
           onClick={() => onToggle(id)}
         >
-          <span className="me-auto text-dark">{id} - {nombre}</span>
-          <span className={`badge me-3 ${dentro > 0 ? 'bg-success' : 'bg-secondary'}`}>
-            {dentro} dentro
-          </span>
+          <span className="me-auto">{id} - {nombre}</span>
+          <span className="badge text-bg-success me-3">{dentro} dentro</span>
         </button>
       </h2>
       <div className={`accordion-collapse collapse ${abierto ? 'show' : ''}`}>
         <div className="accordion-body p-0">
-          <div className="table-responsive">
-            <TablaPersonas personas={personas} />
-          </div>
+          <TablaPersonas personas={personas} />
         </div>
       </div>
     </div>
   );
 }
 
-function PanelEdificios({ edificios, datos }) {
-  const [idAbierto, setIdAbierto] = useState(edificios[0]?.id ?? null);
-  
-  const alternar = (id) => setIdAbierto((actual) => (actual === id ? null : id));
-
+function PanelEdificios({ edificios, datos, idAbierto, onToggle }) {
   return (
-    <div className="accordion" id="panelEdificios">
+    <div className="accordion">
       {edificios.map((ed) => (
         <EdificioItem
           key={ed.id}
@@ -44,7 +35,7 @@ function PanelEdificios({ edificios, datos }) {
           nombre={ed.nombre}
           personas={datos[ed.id] ?? []}
           abierto={idAbierto === ed.id}
-          onToggle={alternar}
+          onToggle={onToggle}
         />
       ))}
     </div>
