@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 const ENLACES = [
   { texto: 'Inicio', href: "/" },
@@ -8,16 +9,27 @@ const ENLACES = [
 ];
 
 function Header({ enlaces = ENLACES }) {
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
+  const cerrarMenu = () => setMenuAbierto
   return (
     <header className="encabezado-principal">
-      <div className="contenedor-logo">
-        <Link to="/" className="enlace-logo">
-          <h1 className="titulo-empresa">Acceso Seguro</h1>
-          <span className="subtitulo-empresa">Soluciones de control de acceso y asistencia</span>
-        </Link>
+      <div className="header-container-top">
+        <div className="contenedor-logo">
+          <Link to="/" className="enlace-logo">
+            <h1 className="titulo-empresa">Acceso Seguro</h1>
+            <span className="subtitulo-empresa">Soluciones de control de acceso y asistencia</span>
+          </Link>
+        </div>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuAbierto(!menuAbierto)}
+        >
+          <span className={`hamburger ${menuAbierto ? 'abierto' : ''}`}></span>
+        </button>
       </div>
 
-      <nav className="navegacion">
+      <nav className={`navegacion ${menuAbierto ? 'activo' : ''}`}>
         <ul>
           {enlaces.map((e) => (
             <li key={e.texto}>
