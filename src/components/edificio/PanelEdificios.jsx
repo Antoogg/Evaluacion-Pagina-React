@@ -5,22 +5,23 @@ function EdificioItem({ id, nombre, personas, abierto, onToggle }) {
   const dentro = personas.filter((p) => p.estado === 'Dentro').length;
 
   return (
-    <div className="accordion-item mb-2 border rounded overflow-hidden">
+    <div className="accordion-item mb-3 border rounded shadow-sm overflow-hidden">
       <h2 className="accordion-header">
         <button
           type="button"
-          className={`accordion-button fw-bold d-flex justify-content-between align-items-center${abierto ? '' : ' collapsed'}`}
+          className={`accordion-button fw-bold d-flex justify-content-between align-items-center ${abierto ? '' : 'collapsed'}`}
           aria-expanded={abierto}
-          aria-controls={`collapse${id}`}
           onClick={() => onToggle(id)}
         >
-          <span className="me-auto">{id} - {nombre}</span>
-          <small className="badge-contador me-3" id={`contador-${id}`}>{dentro} dentro</small>
+          <span className="me-auto text-dark">{id} - {nombre}</span>
+          <span className={`badge me-3 ${dentro > 0 ? 'bg-success' : 'bg-secondary'}`}>
+            {dentro} dentro
+          </span>
         </button>
       </h2>
-      <div id={`collapse${id}`} className={`accordion-collapse collapse${abierto ? ' show' : ''}`}>
+      <div className={`accordion-collapse collapse ${abierto ? 'show' : ''}`}>
         <div className="accordion-body p-0">
-          <div className="table-responsive" id={`tbody-${id}`}>
+          <div className="table-responsive">
             <TablaPersonas personas={personas} />
           </div>
         </div>
@@ -29,21 +30,25 @@ function EdificioItem({ id, nombre, personas, abierto, onToggle }) {
   );
 }
 
-function PanelEdificios({ edificios, datos}){
-  const [idAbierto, satIdAbierto] = useState(edificos[0]?.id ?? null);
-  const alternar = (id) => satIdAbierto((actual) => (actual === id ? null: id))
+function PanelEdificios({ edificios, datos }) {
+  const [idAbierto, setIdAbierto] = useState(edificios[0]?.id ?? null);
+  
+  const alternar = (id) => setIdAbierto((actual) => (actual === id ? null : id));
 
   return (
     <div className="accordion" id="panelEdificios">
       {edificios.map((ed) => (
         <EdificioItem
-          key={ed.id} id ={ed.id} nombre={ed.nombre}
-          personas={datos[ed.id]??[]}
-          abierto={idAbierto === ed.id} onToggle={alternar}
+          key={ed.id}
+          id={ed.id}
+          nombre={ed.nombre}
+          personas={datos[ed.id] ?? []}
+          abierto={idAbierto === ed.id}
+          onToggle={alternar}
         />
       ))}
     </div>
-  )
+  );
 }
 
-export default PanelEdificios
+export default PanelEdificios;

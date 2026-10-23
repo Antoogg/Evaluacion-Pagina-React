@@ -1,0 +1,15 @@
+.login-container {
+  max-width: 420px;
+  margin-top: 3rem;
+}
+
+.login-card {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.login-title {
+  color: #091e3d;
+  font-weight: 700;
+}

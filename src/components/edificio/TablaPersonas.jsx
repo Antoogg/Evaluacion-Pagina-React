@@ -1,25 +1,38 @@
 function FilaPersona({ persona }) {
-  const claseEstado = persona.estado === 'Dentro' ? 'dentro' : 'fuera';
+  const esDentro = persona.estado === 'Dentro';
+  
   return (
     <tr>
-      <td>{persona.nombre}</td>
-      <td>{persona.rut}</td>
-      <td><strong className={`status ${claseEstado}`}>{persona.estado}</strong></td>
-      <td>{persona.hora}</td>
+      <td className="fw-semibold text-dark">{persona.nombre}</td>
+      <td className="text-secondary">{persona.rut}</td>
+      <td>
+        <span className={esDentro ? 'badge-status-dentro' : 'badge-status-fuera'}>
+          {persona.estado}
+        </span>
+      </td>
+      <td className="text-muted font-monospace">{persona.hora}</td>
     </tr>
   );
 }
 
-
 function TablaPersonas({ personas = [] }) {
   return (
-    <table className="tabla-personas">
+    <table className="table table-hover align-middle mb-0 tabla-control">
       <thead>
-        <tr><th>Nombre</th><th>RUT</th><th>Estado</th><th>Hora</th></tr>
+        <tr>
+          <th>Nombre</th>
+          <th>RUT</th>
+          <th>Estado</th>
+          <th>Hora</th>
+        </tr>
       </thead>
       <tbody>
         {personas.length === 0 ? (
-          <tr className="fila-vacia"><td colSpan={4}>Sin registros de personas</td></tr>
+          <tr>
+            <td colSpan={4} className="text-center py-4 text-muted fst-italic">
+              Sin registros de personas en este edificio.
+            </td>
+          </tr>
         ) : (
           personas.map((p) => <FilaPersona key={p.rut} persona={p} />)
         )}

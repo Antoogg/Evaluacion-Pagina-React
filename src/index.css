@@ -1,20 +1,32 @@
+@import './styles/control.css';
+@import './styles/inicio.css';
+@import './styles/login.css';
+@import './styles/recuperacion.css';
+@import './styles/registro.css';
+
+/* Reset general */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-a {
-  text-decoration: none;
 }
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: #f8fafc;
   color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Encabezado */
 .encabezado-principal {
   background-color: #091e3d;
   color: #ffffff;
@@ -77,22 +89,7 @@ body {
   border-bottom: 2px solid #38bdf8;
 }
 
-
 .img-logo {
   height: 40px;
   width: auto;
-}
-
-.status.dentro {
-  background-color: #198754;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-}
-
-.status.fuera {
-  background-color: #6c757d;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
 }

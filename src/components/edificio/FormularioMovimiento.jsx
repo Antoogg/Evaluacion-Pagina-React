@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { validarMovimiento } from '../../utils/validators.js';
 
 const TIPOS = [
-  { valor: 'Entrada', etiqueta: 'Entrada', clase: 'btn-entrada' },
-  { valor: 'EntradaVisitante', etiqueta: 'Entrada', sub: 'Visitante', clase: 'btn-entrada' },
-  { valor: 'Salida', etiqueta: 'Salida', clase: 'btn-salida' },
-  { valor: 'SalidaVisitante', etiqueta: 'Salida', sub: 'Visitante', clase: 'btn-salida' },
+  { valor: 'Entrada', etiqueta: 'Entrada' },
+  { valor: 'EntradaVisitante', etiqueta: 'Entrada Visitante' },
+  { valor: 'Salida', etiqueta: 'Salida' },
+  { valor: 'SalidaVisitante', etiqueta: 'Salida Visitante' },
 ];
 
 function FormularioMovimiento({ edificios, onRegistrar }) {
@@ -27,54 +27,78 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
   };
 
   return (
-    <div className="movimiento">
-      <h2>Registrar Movimiento</h2>
-      <form className="datos" onSubmit={manejarEnvio} noValidate>
-        <div className="contenedor-registro">
-          <label htmlFor="nombre" className="form-label small">Nombre de la persona:</label>
-          <input
-            type="text" id="nombre" className="form-control form-control-sm"
-            placeholder="Ingresar nombres" value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
-          <span className="mensaje-error" id="errorNombre">{errores.nombre}</span>
+    <form onSubmit={manejarEnvio} noValidate>
+      <div className="mb-3">
+        <label htmlFor="nombre" className="form-label fw-bold small">Nombre Completo</label>
+        <input
+          type="text"
+          id="nombre"
+          className={`form-control ${errores.nombre ? 'is-invalid' : ''}`}
+          placeholder="Ej: Juan Pérez"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+        {errores.nombre && <div className="invalid-feedback">{errores.nombre}</div>}
+      </div>
 
-          <label htmlFor="rut" className="form-label small">RUT de la persona:</label>
-          <input
-            type="text" id="rut" className="form-control form-control-sm"
-            placeholder="Ingresar RUT (sin puntos ni guion)" value={rut}
-            onChange={(e) => setRut(e.target.value)}
-          />
-          <span className="mensaje-error" id="errorRUT">{errores.rut}</span>
+      <div className="mb-3">
+        <label htmlFor="rut" className="form-label fw-bold small">RUT</label>
+        <input
+          type="text"
+          id="rut"
+          className={`form-control ${errores.rut ? 'is-invalid' : ''}`}
+          placeholder="Sin puntos ni guion (ej: 123456789)"
+          value={rut}
+          onChange={(e) => setRut(e.target.value)}
+        />
+        {errores.rut && <div className="invalid-feedback">{errores.rut}</div>}
+      </div>
 
-          <label htmlFor="selectEdificio">Edificio:</label>
-          <select id="selectEdificio" value={idEdificio} onChange={(e) => setIdEdificio(e.target.value)}>
-            <option value="" disabled hidden>Elige un edificio...</option>
-            {edificios.map((ed) => (
-              <option key={ed.id} value={ed.id}>{ed.id} - {ed.nombre}</option>
-            ))}
-          </select>
-          <span className="mensaje-error" id="errorEdificio">{errores.edificio}</span>
+      <div className="mb-3">
+        <label htmlFor="selectEdificio" className="form-label fw-bold small">Edificio</label>
+        <select
+          id="selectEdificio"
+          className={`form-select ${errores.edificio ? 'is-invalid' : ''}`}
+          value={idEdificio}
+          onChange={(e) => setIdEdificio(e.target.value)}
+        >
+          <option value="" disabled hidden>Selecciona un edificio...</option>
+          {edificios.map((ed) => (
+            <option key={ed.id} value={ed.id}>{ed.id} - {ed.nombre}</option>
+          ))}
+        </select>
+        {errores.edificio && <div className="invalid-feedback">{errores.edificio}</div>}
+      </div>
 
-          <label>Tipo de movimiento:</label>
-          <div className="radioBtn">
-            {TIPOS.map((t) => (
-              <label key={t.valor} className={`btn-radio ${t.clase}`}>
-                <input
-                  type="radio" name="tipo_registro" value={t.valor}
-                  checked={tipo === t.valor} onChange={() => setTipo(t.valor)}
-                />
-                <span>
-                  {t.etiqueta}
-                  {t.sub && (<><br />{t.sub}</>)}
-                </span>
+      <div className="mb-3">
+        <label className="form-label fw-bold small d-block">Tipo de Movimiento</label>
+        <div className="row g-2">
+          {TIPOS.map((t) => (
+            <div className="col-6" key={t.valor}>
+              <input
+                type="radio"
+                className="btn-check"
+                name="tipo_registro"
+                id={`btn-radio-${t.valor}`}
+                value={t.valor}
+                checked={tipo === t.valor}
+                onChange={() => setTipo(t.valor)}
+              />
+              <label
+                className={`btn btn-outline-${t.valor.includes('Entrada') ? 'success' : 'secondary'} w-100 text-truncate`}
+                htmlFor={`btn-radio-${t.valor}`}
+              >
+                {t.etiqueta}
               </label>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-        <button type="submit" className="btn-registro" id="btn-registro">Registrar Movimiento</button>
-      </form>
-    </div>
+      </div>
+
+      <button type="submit" className="btn btn-primary w-100 fw-bold mt-2">
+        Registrar Movimiento
+      </button>
+    </form>
   );
 }
 
