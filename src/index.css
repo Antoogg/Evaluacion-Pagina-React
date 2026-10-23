@@ -1,22 +1,37 @@
+@import './styles/control.css';
+@import './styles/inicio.css';
+@import './styles/login.css';
+@import './styles/recuperacion.css';
+@import './styles/registro.css';
+
+/* Reset general */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-a {
-  text-decoration: none;
 }
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: #f8fafc;
   color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+<<<<<<< HEAD
 /* HEADER */
 
+=======
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Encabezado */
+>>>>>>> 12f8060be33b04fa33da1fd571bc2964a2aeb35e
 .encabezado-principal {
   background-color: #091e3d;
   color: #ffffff;
@@ -82,6 +97,7 @@ body {
 .img-logo {
   height: 40px;
   width: auto;
+<<<<<<< HEAD
 }
 
 .status.dentro {
@@ -209,4 +225,6 @@ body {
 
 .btn-registro:hover {
   background-color: #214387;
+=======
+>>>>>>> 12f8060be33b04fa33da1fd571bc2964a2aeb35e
 }

@@ -1,0 +1,9 @@
+.recuperacion-container {
+  max-width: 420px;
+  margin-top: 3rem;
+}
+
+.recuperacion-card {
+  border: none;
+  border-radius: 10px;
+}

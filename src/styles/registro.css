@@ -1,0 +1,10 @@
+.registro-container {
+  max-width: 500px;
+  margin-top: 2.5rem;
+}
+
+.registro-card {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
