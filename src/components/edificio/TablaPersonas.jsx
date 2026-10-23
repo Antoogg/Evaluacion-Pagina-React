@@ -1,30 +1,33 @@
 function FilaPersona({ persona }) {
-  const claseEstado = persona.estado === 'Dentro' ? 'dentro' : 'fuera';
+  const dentro = persona.estado === 'Dentro';
   return (
     <tr>
       <td>{persona.nombre}</td>
       <td>{persona.rut}</td>
-      <td><strong className={`status ${claseEstado}`}>{persona.estado}</strong></td>
+      <td>
+        <span className={`badge text-bg-${dentro ? 'success' : 'secondary'}`}>{persona.estado}</span>
+      </td>
       <td>{persona.hora}</td>
     </tr>
   );
 }
 
-
 function TablaPersonas({ personas = [] }) {
   return (
-    <table className="tabla-personas">
-      <thead>
-        <tr><th>Nombre</th><th>RUT</th><th>Estado</th><th>Hora</th></tr>
-      </thead>
-      <tbody>
-        {personas.length === 0 ? (
-          <tr className="fila-vacia"><td colSpan={4}>Sin registros de personas</td></tr>
-        ) : (
-          personas.map((p) => <FilaPersona key={p.rut} persona={p} />)
-        )}
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="table table-striped table-hover align-middle">
+        <thead className="table-dark">
+          <tr><th>Nombre</th><th>RUT</th><th>Estado</th><th>Hora</th></tr>
+        </thead>
+        <tbody>
+          {personas.length === 0 ? (
+            <tr><td colSpan={4} className="text-center text-muted">Sin registros de personas</td></tr>
+          ) : (
+            personas.map((p) => <FilaPersona key={p.rut} persona={p} />)
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

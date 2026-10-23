@@ -30,9 +30,8 @@ function EdificioItem({ id, nombre, personas, abierto, onToggle }) {
 }
 
 function PanelEdificios({ edificios, datos}){
-  const [idAbierto, satIdAbierto] = useState(edificos[0]?.id ?? null);
-  const alternar = (id) => satIdAbierto((actual) => (actual === id ? null: id))
-
+  const [idAbierto, setIdAbierto] = useState(edificios[0]?.id ?? null);
+const alternar = (id) => setIdAbierto((actual) => (actual === id ? null : id));
   return (
     <div className="accordion" id="panelEdificios">
       {edificios.map((ed) => (
