@@ -3,16 +3,17 @@ import { validarMovimiento } from '../../utils/validators.js';
 
 const TIPOS = [
   { valor: 'Entrada', etiqueta: 'Entrada', color: 'success' },
-  { valor: 'EntradaVisitante', etiqueta: 'Entrada Visitante', color: 'success' },
-  { valor: 'Salida', etiqueta: 'Salida', color: 'danger' },
-  { valor: 'SalidaVisitante', etiqueta: 'Salida Visitante', color: 'danger' },
+  { valor: 'Salida', etiqueta: 'Salida', color: 'danger' }
 ];
 
 function FormularioMovimiento({ edificios, onRegistrar }) {
   const [nombre, setNombre] = useState('');
   const [rut, setRut] = useState('');
   const [idEdificio, setIdEdificio] = useState('');
-  const [tipo, setTipo] = useState('Entrada');
+
+  const [accion, setAccion] = useState('Entrada');
+  const [esVisitante, setEsVisitante] = useState(false);
+
   const [errores, setErrores] = useState({});
 
   const manejarEnvio = (e) => {
@@ -21,7 +22,9 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
     setErrores(nuevosErrores);
     if (Object.keys(nuevosErrores).length > 0) return;
 
-    onRegistrar({ nombre: nombre.trim(), rut: rut.trim(), idEdificio, tipo });
+    const tipoFinal = `${accion}${esVisitante ? 'Visitante' : ''}`;
+
+    onRegistrar({ nombre: nombre.trim(), rut: rut.trim(), idEdificio, tipo: tipoFinal });
     setNombre('');
     setRut('');
   };
@@ -71,7 +74,7 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
       </div>
 
       <div className="mb-3">
-        <label className="form-label fw-bold small d-block">Tipo de Movimiento</label>
+        <label className="form-label fw-bold small d-block">Movimiento</label>
         <div className="row g-2">
           {TIPOS.map((t) => (
             <div className="col-6" key={t.valor}>
@@ -81,8 +84,8 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
                 name="tipo_registro"
                 id={`btn-radio-${t.valor}`}
                 value={t.valor}
-                checked={tipo === t.valor}
-                onChange={() => setTipo(t.valor)}
+                checked={accion === t.valor}
+                onChange={() => setAccion(t.valor)}
               />
               <label
                 className={`btn btn-outline-${t.color} w-100`}
@@ -90,8 +93,25 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
               >
                 {t.etiqueta}
               </label>
+
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="mb-3">
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchVisitante"
+            checked={esVisitante}
+            onChange={(e) => setEsVisitante(e.target.checked)}
+          />
+          <label className="form-check-label small fw-semibold" htmlFor="flexSwitchVisitante">
+            ¿Es Visitante?
+          </label>
         </div>
       </div>
 

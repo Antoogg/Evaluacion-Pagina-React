@@ -6,6 +6,47 @@
   margin-bottom: 1.5rem;
 }
 
+.btn-outline-success.w-100 {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+  color: #ffffff;
+
+}
+
+.btn-outline-success.w-100:hover {
+  background-color: #195325;
+  border-color: #0e3b18;
+  color: #ffffff;
+}
+
+.btn-check:checked+.btn-outline-success,
+.btn-check:active+.btn-outline-success {
+  background-color: #195325;
+  border-color: #195325;
+  color: #ffffff;
+}
+
+.btn-outline-danger.w-100 {
+  background-color: #c62828;
+  border-color: #c62828;
+  color: #ffffff;
+
+}
+
+.btn-outline-danger.w-100:hover {
+  background-color: #631313;
+  border-color: #631313;
+  color: #ffffff;
+}
+
+.btn-check:checked+.btn-outline-danger,
+.btn-check:active+.btn-outline-danger {
+  background-color: #631313;
+  border-color: #631313;
+  color: #ffffff;
+}
+
+
 .card-control {
   border: none;
   border-radius: 10px;

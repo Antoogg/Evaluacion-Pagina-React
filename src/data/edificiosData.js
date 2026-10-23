@@ -9,19 +9,19 @@ export const EDIFICIOS = [
 const DATOS_EDIFICIO = {
   ED001: [
     { nombre: 'Juan Pérez', rut: '223162485', estado: 'Dentro', hora: '08:30' },
-    { nombre: 'María Gómez', rut: '719676767', estado: 'Fuera', hora: '12:15' },
+    { nombre: 'María Gómez', rut: '719676766', estado: 'Fuera', hora: '12:15' },
     { nombre: 'Carlos Silva', rut: '267824045', estado: 'Dentro', hora: '09:05' },
   ],
   ED002: [
-    { nombre: 'Ana Torres', rut: '172520432', estado: 'Dentro', hora: '10:00' },
-    { nombre: 'Pedro Morales', rut: '1765202', estado: 'Fuera', hora: '11:40' },
+    { nombre: 'Ana Torres', rut: '17252043K', estado: 'Dentro', hora: '10:00' },
+    { nombre: 'Pedro Morales', rut: '176520288', estado: 'Fuera', hora: '11:40' },
   ],
   ED003: [
-    { nombre: 'Fernandito Silva', rut: '2103020212', estado: 'Dentro', hora: '10:00' },
-    { nombre: 'Anthony Miles', rut: '22030202', estado: 'Fuera', hora: '11:40' },
+    { nombre: 'Fernandito Silva', rut: '213020218', estado: 'Dentro', hora: '10:00' },
+    { nombre: 'Anthony Miles', rut: '212030201', estado: 'Fuera', hora: '11:40' },
   ],
   ED004: [
-    { nombre: 'Hernan Hernan', rut: '281654929', estado: 'Dentro', hora: '13:00' },
+    { nombre: 'Hernan Hernan', rut: '281654926', estado: 'Dentro', hora: '13:00' },
     { nombre: 'Pancho Floo', rut: '216202023', estado: 'Fuera', hora: '13:50' },
   ],
 };
