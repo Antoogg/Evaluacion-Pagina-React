@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { validarMovimiento } from '../../utils/validators.js';
 
 const TIPOS = [
-  { valor: 'Entrada', etiqueta: 'Entrada' },
-  { valor: 'EntradaVisitante', etiqueta: 'Entrada Visitante' },
-  { valor: 'Salida', etiqueta: 'Salida' },
-  { valor: 'SalidaVisitante', etiqueta: 'Salida Visitante' },
+  { valor: 'Entrada', etiqueta: 'Entrada', color: 'success' },
+  { valor: 'EntradaVisitante', etiqueta: 'Entrada Visitante', color: 'success' },
+  { valor: 'Salida', etiqueta: 'Salida', color: 'danger' },
+  { valor: 'SalidaVisitante', etiqueta: 'Salida Visitante', color: 'danger' },
 ];
 
 function FormularioMovimiento({ edificios, onRegistrar }) {
@@ -85,7 +85,7 @@ function FormularioMovimiento({ edificios, onRegistrar }) {
                 onChange={() => setTipo(t.valor)}
               />
               <label
-                className={`btn btn-outline-${t.valor.includes('Entrada') ? 'success' : 'secondary'} w-100 text-truncate`}
+                className={`btn btn-outline-${t.color} w-100`}
                 htmlFor={`btn-radio-${t.valor}`}
               >
                 {t.etiqueta}
