@@ -55,6 +55,7 @@ function ControlView() {
           <FormularioMovimiento edificios={EDIFICIOS} onRegistrar={handleRegistrar} />
         </div>
 
+        {/* Listado y tablas por edificio */}
         <div className="col-lg-8">
           {mensaje && (
             <div className={`alert alert-${mensaje.tipo}`} role="alert">

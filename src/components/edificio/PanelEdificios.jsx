@@ -10,14 +10,13 @@ function EdificioItem({ id, nombre, personas, abierto, onToggle }) {
           type="button"
           className={`accordion-button fw-bold${abierto ? '' : ' collapsed'}`}
           aria-expanded={abierto}
-          aria-controls={`collapse${id}`}
           onClick={() => onToggle(id)}
         >
           <span className="me-auto">{id} - {nombre}</span>
           <span className="badge text-bg-success me-3">{dentro} dentro</span>
         </button>
       </h2>
-      <div id={`collapse${id}`} className={`accordion-collapse collapse${abierto ? ' show' : ''}`}>
+      <div className={`accordion-collapse collapse ${abierto ? 'show' : ''}`}>
         <div className="accordion-body p-0">
           <TablaPersonas personas={personas} />
         </div>
