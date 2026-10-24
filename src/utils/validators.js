@@ -1,7 +1,6 @@
 export function validarRut(rut) {
-  if (!rut || typeof rut !== 'string') return false;
-  const rutLimpio = rut.replace(/[^0-9kK]/g, '');
-  return rutLimpio.length >= 8 && rutLimpio.length <= 9;
+  if (typeof rut !== 'string') return false;
+  return /^\d{7,8}[\dK]$/.test(normalizarRut(rut));
 }
 
 export function validarCorreo(email) {
