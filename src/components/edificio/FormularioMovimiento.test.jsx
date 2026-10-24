@@ -97,7 +97,7 @@ describe('FormularioMovimiento - envio', () => {
     it.each([
         ['Entrada', 'EntradaVisitante'],
         ['Salida', 'SalidaVisitante'],
-    ])('Entrada / Salida + Visitante', async (accion, esperado) => {
+    ])('%s + visitante => %s', async (accion, esperado) => {
         const { onRegistrar, user } = renderizar();
         await completar(user);
         await user.click(screen.getByLabelText(accion));

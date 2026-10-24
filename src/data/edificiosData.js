@@ -66,12 +66,12 @@ export function eliminarPersona(idEdificio, rut) {
   return db[idEdificio].length < antes;
 }
 
-export function registrarMovimiento(idEdificio, { nombre, rut, estado, hora }) {
+export function registrarMovimiento(idEdificio, { nombre, rut, estado, hora, visitante = false }) {
   asegurarEdificio(idEdificio);
   const existe = db[idEdificio].some((p) => p.rut === rut);
   return existe
-    ? actualizarPersona(idEdificio, rut, { nombre, estado, hora })
-    : crearPersona(idEdificio, { nombre, rut, estado, hora });
+    ? actualizarPersona(idEdificio, rut, { nombre, estado, hora, visitante })
+    : crearPersona(idEdificio, { nombre, rut, estado, hora, visitante });
 }
 
 export function reiniciarDatos() {

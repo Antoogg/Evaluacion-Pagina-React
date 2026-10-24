@@ -11,6 +11,7 @@ function ControlView() {
 
   const handleRegistrar = ({ nombre, rut, idEdificio, tipo }) => {
     const esEntrada = tipo.startsWith('Entrada');
+    const visitante = tipo.endsWith('Visitante');
     const estado = esEntrada ? 'Dentro' : 'Fuera';
     const hora = new Date().toLocaleTimeString('es-CL', {
       hour: '2-digit',
@@ -19,7 +20,7 @@ function ControlView() {
     });
 
     try {
-      registrarEnBD(idEdificio, { nombre, rut, estado, hora });
+      registrarEnBD(idEdificio, { nombre, rut, estado, hora, visitante });
       setDatos(obtenerDatos());
       setIdAbierto(idEdificio);
       setMensaje({ texto: `${nombre}: ${esEntrada ? 'entrada' : 'salida'} registrada.`, tipo: 'success' });
